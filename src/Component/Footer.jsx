@@ -21,7 +21,7 @@ function Footer() {
         <div className="links d-flex flex-column">
           <h4>Quick Links</h4>
          
-          <Link to={'/Home'} style={{textDecoration:'none'}}>Home</Link>
+          <Link to={'/'} style={{textDecoration:'none'}}>Home</Link>
           <Link to={'/Login'} style={{textDecoration:'none'}}>Log-in</Link>
           <Link to={'/Register'} style={{textDecoration:'none'}}>Register</Link>
         </div>
@@ -40,18 +40,18 @@ function Footer() {
             <Button variant="dark" className="text-secondary"><i className="fa-solid fa-arrow-right"></i></Button>
           </div>
           
-          <div className="d-flex flex-row mt-3 justify-content-between">
-            <Link to='https://www.instagram.com/' style={{textDecoration: 'none'}}>
+          <div className="d-flex flex-row mt-4 justify-content-between">
+            <Link target='blank' to='https://www.instagram.com/' style={{textDecoration: 'none'}}>
               <i className="fa-brands fa-instagram me-3" style={{fontSize:'24px'}}></i>
             </Link>
-            <Link to='https://www.linkedin.com/' style={{textDecoration: 'none'}}>
+            <Link target='blank' to='https://www.linkedin.com/' style={{textDecoration: 'none'}}>
               <i className="fa-brands fa-linkedin me-3" style={{fontSize:'24px'}}></i>
             </Link>
-            <Link to='https://facebook.com/' style={{textDecoration: 'none'}}>
+            <Link target='blank' to='https://facebook.com/' style={{textDecoration: 'none'}}>
               <i className="fa-brands fa-facebook me-3" style={{fontSize:'24px'}}></i>
             </Link>
-            <Link to='https://twitter.com/' style={{textDecoration: 'none'}}>
-              <i className="fa-brands fa-twitter me-3" style={{fontSize:'24px'}}></i>
+            <Link target='blank' to='https://twitter.com/' style={{textDecoration: 'none'}}>
+             <i className="fa-brands fa-x-twitter me-3" style={{fontSize:'24px'}}></i>
             </Link> 
           </div>
         </div>
@@ -65,3 +65,5 @@ function Footer() {
 }
 
 export default Footer;
+
+
