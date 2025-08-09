@@ -20,7 +20,7 @@ function Home() {
         marginRight: '5px' }} ></img>LOCK-IN</h1>
        
         <p>LOCKIN is a project management web app tailored for developers to showcase, manage, and access their personal or collaborative projects efficiently. It supports full CRUD functionality, making it ideal for organizing tasks, tracking progress, and maintaining a clean workflow</p>
-        <button className='btn btn-danger'>Explore</button>
+       <Link to={'/login'}> <button className='btn btn-danger'>Explore</button></Link>
         
          </Col>
          <Col sm={12} md={6}>
@@ -41,19 +41,11 @@ function Home() {
         <div style={{width:"500px", marginLeft:"50px",marginRight:"80px"}}> 
            <ProjectCard/>
         </div>
-
-        <div style={{width:"500px",marginRight:"80px"}}> 
-           <ProjectCard/>
-        </div>
-
-        <div style={{width:"500px",marginRight:"80px"}}> 
-           <ProjectCard/>
-        </div>
       </div>
     </marquee>
 
-    <div className='text-center mt-5' style={{textDecoration:"none"}}>
-      <Link to={'/projects'}>View More Projects</Link>
+    <div className='text-center mt-5' >
+      <Link style={{textDecoration:"none"}} to={'/projects'}>View More Projects</Link>
     </div>
 
     </div>
