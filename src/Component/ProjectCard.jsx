@@ -27,7 +27,7 @@ function ProjectCard({
   fullDescription = 'VIDDEO is a modern media player web app designed for seamless video playback, offering an intuitive interface and robust functionality for developers and users alike.',
   technologies = ['HTML', 'CSS', 'React'],
   githubUrl = 'https://github.com/imaswin12345/VideoApp',
-  liveUrl = 'https://melodic-rugelach-91e78d.netlify.app/',
+  liveUrl = 'https://video-app1.vercel.app/',
   image = viddeo,
   category = 'Web Application',
   featured = false,
@@ -39,88 +39,77 @@ function ProjectCard({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const getTechColor = (tech) => {
-    const colors = {
-      React: '#61DAFB',
-      JavaScript: '#F7DF1E',
-      HTML: '#E34F26',
-      CSS: '#1572B6',
-      'Node.js': '#339933',
-      Python: '#3776AB',
-      TypeScript: '#3178C6',
-      'Vue.js': '#4FC08D',
-      MongoDB: '#47A248',
-      Express: '#000000',
-      Angular: '#DD0031',
-      Bootstrap: '#7952B3',
-    };
-    return colors[tech] || theme.palette.primary.main;
-  };
-
   return (
     <>
       <Card
         sx={{
-          maxWidth: 320,
+          maxWidth: 350,
           mx: 'auto',
           mb: 3,
           borderRadius: 2,
           overflow: 'hidden',
-          transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          transition: 'all 0.3s ease',
           cursor: 'pointer',
-          bgcolor: 'background.paper',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+          bgcolor: '#ffffff',
+          border: '1px solid #e0e0e0',
+          boxShadow: 'none',
           '&:hover': {
             transform: 'translateY(-4px)',
-            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.12)',
+            boxShadow: '0 8px 24px rgba(25, 118, 210, 0.12)',
+            borderColor: '#1976d2',
           },
         }}
         onClick={handleOpen}
         role="button"
         aria-label={`Open ${title} project details`}
       >
+        {featured && (
+          <Chip
+            label="Featured"
+            size="small"
+            sx={{
+              position: 'absolute',
+              top: 12,
+              right: 12,
+              bgcolor: '#1976d2',
+              color: '#ffffff',
+              fontWeight: 600,
+              fontSize: '0.75rem',
+              zIndex: 1,
+              boxShadow: '0 2px 8px rgba(25, 118, 210, 0.3)',
+            }}
+          />
+        )}
         <CardMedia
           component="img"
-          height="180"
+          height="200"
           image={image}
           alt={`${title} preview`}
           sx={{
             objectFit: 'cover',
-            transition: 'transform 0.2s ease',
-            '&:hover': {
-              transform: 'scale(1.02)',
-            },
+            bgcolor: '#fafafa',
           }}
         />
-        <CardContent sx={{ p: 2 }}>
-          {featured && (
-            <Chip
-              label="Featured"
-              size="small"
-              sx={{
-                position: 'absolute',
-                top: 8,
-                right: 8,
-                bgcolor: '#ff6b35',
-                color: 'white',
-                fontWeight: 600,
-                fontSize: '0.7rem',
-              }}
-            />
-          )}
+        <CardContent sx={{ p: 3 }}>
           <Typography
             variant="h6"
-            color="text.primary"
-            sx={{ fontWeight: 600, fontSize: '1rem', mb: 1 }}
+            sx={{ 
+              fontWeight: 600, 
+              fontSize: '1.125rem', 
+              mb: 1.5,
+              color: '#212121',
+              lineHeight: 1.3
+            }}
           >
             {title}
           </Typography>
           <Typography
             variant="body2"
-            color="text.secondary"
             sx={{
-              fontSize: '0.85rem',
-              lineHeight: 1.4,
+              fontSize: '0.9375rem',
+              lineHeight: 1.6,
+              color: '#757575',
+              mb: 2,
               display: '-webkit-box',
               WebkitLineClamp: 2,
               WebkitBoxOrient: 'vertical',
@@ -129,18 +118,19 @@ function ProjectCard({
           >
             {description}
           </Typography>
-          <Stack direction="row" spacing={0.8} sx={{ mt: 1.5 }} flexWrap="wrap" useFlexGap>
+          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
             {technologies.slice(0, 3).map((tech) => (
               <Chip
                 key={tech}
                 label={tech}
                 size="small"
                 sx={{
-                  bgcolor: `${getTechColor(tech)}15`,
-                  color: getTechColor(tech),
-                  fontSize: '0.7rem',
-                  fontWeight: 600,
-                  height: 20,
+                  bgcolor: '#f5f5f5',
+                  color: '#212121',
+                  fontSize: '0.75rem',
+                  fontWeight: 500,
+                  border: '1px solid #e0e0e0',
+                  height: 24,
                 }}
               />
             ))}
@@ -149,11 +139,12 @@ function ProjectCard({
                 label={`+${technologies.length - 3}`}
                 size="small"
                 sx={{
-                  bgcolor: 'action.hover',
-                  color: 'text.secondary',
-                  fontSize: '0.7rem',
-                  fontWeight: 600,
-                  height: 20,
+                  bgcolor: '#f5f5f5',
+                  color: '#757575',
+                  fontSize: '0.75rem',
+                  fontWeight: 500,
+                  border: '1px solid #e0e0e0',
+                  height: 24,
                 }}
               />
             )}
@@ -168,39 +159,47 @@ function ProjectCard({
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 300,
-          sx: { backdropFilter: 'blur(5px)', backgroundColor: 'rgba(0, 0, 0, 0.4)' },
+          sx: { 
+            backdropFilter: 'blur(8px)', 
+            backgroundColor: 'rgba(0, 0, 0, 0.5)' 
+          },
         }}
       >
         <Fade in={open}>
           <Box
             sx={{
-              bgcolor: 'background.paper',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              bgcolor: '#ffffff',
               borderRadius: 2,
-              p: { xs: 2, md: 3 },
-              maxWidth: { xs: '90%', md: 700 },
+              p: { xs: 3, md: 4 },
+              maxWidth: { xs: '90%', md: 750 },
               width: '100%',
-              maxHeight: '85vh',
-              overflowY: 'auto',
-              position: 'relative',
-              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
-              mx: 'auto',
-              my: 2,
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
+              border: '1px solid #e0e0e0',
             }}
           >
             <IconButton
               onClick={handleClose}
               sx={{
                 position: 'absolute',
-                top: 8,
-                right: 8,
-                color: 'text.secondary',
-                '&:hover': { color: 'text.primary' },
+                top: 12,
+                right: 12,
+                color: '#757575',
+                bgcolor: '#f5f5f5',
+                '&:hover': { 
+                  color: '#212121',
+                  bgcolor: '#e0e0e0'
+                },
               }}
               aria-label="Close modal"
             >
               <CloseIcon />
             </IconButton>
-            <Grid container spacing={2}>
+
+            <Grid container spacing={3}>
               <Grid item xs={12} md={6}>
                 <Box
                   component="img"
@@ -208,53 +207,110 @@ function ProjectCard({
                   alt={`${title} project preview`}
                   sx={{
                     width: '100%',
-                    height: { xs: 200, md: 240 },
+                    height: { xs: 220, md: 280 },
                     objectFit: 'cover',
-                    borderRadius: 1,
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                    borderRadius: 2,
+                    border: '1px solid #e0e0e0',
+                    bgcolor: '#fafafa',
                   }}
                 />
               </Grid>
+
               <Grid item xs={12} md={6}>
-                <Typography variant="h5" color="text.primary" sx={{ fontWeight: 600, mb: 1 }}>
+                <Typography 
+                  variant="h5" 
+                  sx={{ 
+                    fontWeight: 700, 
+                    mb: 2,
+                    color: '#212121',
+                    fontSize: '1.5rem',
+                    lineHeight: 1.3
+                  }}
+                >
                   {title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2, fontSize: '0.9rem' }}>
+
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    mb: 3, 
+                    fontSize: '1rem',
+                    lineHeight: 1.7,
+                    color: '#757575'
+                  }}
+                >
                   {fullDescription}
                 </Typography>
-                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1.5 }}>
+
+                <Typography 
+                  variant="subtitle2" 
+                  sx={{ 
+                    fontWeight: 600, 
+                    mb: 1.5,
+                    color: '#212121',
+                    fontSize: '0.875rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px'
+                  }}
+                >
                   Technologies
                 </Typography>
-                <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mb: 2 }}>
+
+                <Stack 
+                  direction="row" 
+                  spacing={1} 
+                  flexWrap="wrap" 
+                  useFlexGap 
+                  sx={{ mb: 3 }}
+                >
                   {technologies.map((tech) => (
                     <Chip
                       key={tech}
                       label={tech}
                       size="small"
                       sx={{
-                        bgcolor: `${getTechColor(tech)}15`,
-                        color: getTechColor(tech),
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
+                        bgcolor: '#f5f5f5',
+                        color: '#212121',
+                        fontSize: '0.8125rem',
+                        fontWeight: 500,
+                        border: '1px solid #e0e0e0',
+                        height: 28,
                       }}
                     />
                   ))}
                 </Stack>
-                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
+
+                <Stack 
+                  direction={{ xs: 'column', sm: 'row' }} 
+                  spacing={1.5}
+                  sx={{ mt: 3 }}
+                >
                   <Button
                     variant="contained"
-                    color="primary"
                     href={githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     startIcon={<GitHubIcon />}
-                    sx={{ fontWeight: 600, textTransform: 'none', borderRadius: 1 }}
+                    sx={{ 
+                      fontWeight: 600, 
+                      textTransform: 'none', 
+                      borderRadius: 2,
+                      bgcolor: '#1976d2',
+                      color: '#ffffff',
+                      boxShadow: 'none',
+                      py: 1.25,
+                      px: 3,
+                      fontSize: '0.9375rem',
+                      '&:hover': {
+                        bgcolor: '#115293',
+                        boxShadow: 'none'
+                      }
+                    }}
                   >
                     View Code
                   </Button>
                   <Button
                     variant="outlined"
-                    color="secondary"
                     href={liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -262,9 +318,17 @@ function ProjectCard({
                     sx={{
                       fontWeight: 600,
                       textTransform: 'none',
-                      borderRadius: 1,
-                      borderWidth: 2,
-                      '&:hover': { borderWidth: 2 },
+                      borderRadius: 2,
+                      borderColor: '#e0e0e0',
+                      color: '#212121',
+                      py: 1.25,
+                      px: 3,
+                      fontSize: '0.9375rem',
+                      '&:hover': { 
+                        borderColor: '#1976d2',
+                        color: '#1976d2',
+                        bgcolor: 'transparent'
+                      },
                     }}
                   >
                     Live Demo

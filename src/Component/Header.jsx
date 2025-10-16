@@ -5,8 +5,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import Logo from "../Assets/Box.png"
+import { Button } from '@mui/material';
+import theme from '../Theme/Theme';
+import LogoutIcon from '@mui/icons-material/Logout';
 
-function Header() {
+function Header({insideDashBoard}) {
   const [scrolled, setScrolled] = useState(false);
 
   // Handle scroll effect for modern glassmorphism
@@ -118,8 +121,27 @@ function Header() {
                 style={headerStyles.logo}
               />
               <span style={headerStyles.brandText}>LOCK-IN</span>
-            </Navbar.Brand>
+            </Navbar.Brand>      
           </Link>
+
+          {insideDashBoard && 
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: theme.palette.primary.main,
+                borderRadius: 3,
+                fontSize: '1rem',
+                color: '#ffffff',
+                fontWeight: 600, // Fixed typo
+                display: 'flex', // Ensures inline flex layout
+                alignItems: 'center', // Vertically centers icon and text
+                gap: 0.5, // Adds space between icon and text
+              }}
+            >
+              <LogoutIcon sx={{ fontSize: '1.25rem' }} />
+              Logout
+            </Button>
+          }
         </Container>
       </Navbar>
     </>

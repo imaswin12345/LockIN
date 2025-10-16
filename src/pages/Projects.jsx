@@ -14,6 +14,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import ProjectCard from '../Component/ProjectCard';
 import Header from '../Component/Header';
+import Footer from '../Component/Footer';
+import theme from '../Theme/Theme';
 
 function Projects() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -40,31 +42,35 @@ function Projects() {
       <Container
         sx={{
           mt: 12,
-          mb: 5,
+          mb: 8,
           minHeight: '100vh',
         }}
       >
         {/* Hero Section */}
         <Fade in timeout={800}>
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Box sx={{ textAlign: 'center', mb: 7 }}>
             <Typography
               variant="h1"
-              color="text.primary"
               sx={{ 
                 mb: 2, 
-                fontWeight: 600,
-                background: 'linear-gradient(45deg, #1976d2, #d81b60)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                fontWeight: 700,
+                color: theme.palette.primary.main,
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '4rem' },
+                letterSpacing: '-0.02em'
               }}
             >
               All Projects
             </Typography>
             <Typography
               variant="h6"
-              color="text.secondary"
-              sx={{ maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
+              sx={{ 
+                maxWidth: 600, 
+                mx: 'auto', 
+                lineHeight: 1.7,
+                color: '#757575',
+                fontSize: { xs: '1rem', sm: '1.125rem' },
+                fontWeight: 400
+              }}
             >
               Discover our collection of innovative projects built with cutting-edge technologies
             </Typography>
@@ -73,7 +79,7 @@ function Projects() {
 
         {/* Enhanced Search Section */}
         <Fade in timeout={1000}>
-          <Box sx={{ mb: 6 }}>
+          <Box sx={{ mb: 7 }}>
             {/* Search Bar */}
             <Box
               sx={{
@@ -87,16 +93,16 @@ function Projects() {
                   display: 'flex',
                   width: { xs: '100%', sm: '75%' },
                   maxWidth: 600,
-                  bgcolor: 'background.paper',
-                  borderRadius: 3,
-                  boxShadow: isSearchFocused 
-                    ? '0px 8px 24px rgba(25, 118, 210, 0.15)' 
-                    : '0px 2px 8px rgba(0, 0, 0, 0.1)',
+                  bgcolor: '#ffffff',
+                  borderRadius: 2,
                   overflow: 'hidden',
                   transition: 'all 0.3s ease',
                   border: isSearchFocused 
-                    ? '2px solid rgba(25, 118, 210, 0.3)' 
-                    : '2px solid transparent',
+                    ? '2px solid #1976d2' 
+                    : '2px solid #e0e0e0',
+                  boxShadow: isSearchFocused 
+                    ? '0 4px 12px rgba(25, 118, 210, 0.1)' 
+                    : 'none',
                 }}
               >
                 <TextField
@@ -110,7 +116,7 @@ function Projects() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <SearchIcon color="action" />
+                        <SearchIcon sx={{ color: '#757575' }} />
                       </InputAdornment>
                     ),
                     endAdornment: searchQuery && (
@@ -118,16 +124,23 @@ function Projects() {
                         <IconButton
                           onClick={handleClearSearch}
                           size="small"
-                          sx={{ mr: 1 }}
+                          sx={{ 
+                            mr: 1,
+                            color: '#757575',
+                            '&:hover': {
+                              color: '#1976d2',
+                              bgcolor: 'transparent'
+                            }
+                          }}
                         >
-                          <ClearIcon />
+                          <ClearIcon fontSize="small" />
                         </IconButton>
                       </InputAdornment>
                     ),
                   }}
                   sx={{
                     '& .MuiOutlinedInput-root': {
-                      borderRadius: 3,
+                      borderRadius: 2,
                       '& fieldset': {
                         borderColor: 'transparent',
                       },
@@ -138,6 +151,10 @@ function Projects() {
                         borderColor: 'transparent',
                       },
                     },
+                    '& .MuiInputBase-input': {
+                      py: 1.75,
+                      fontSize: '1rem'
+                    }
                   }}
                 />
               </Box>
@@ -155,18 +172,18 @@ function Projects() {
                 sx={{
                   display: 'flex',
                   flexWrap: 'wrap',
-                  gap: 1,
+                  gap: 1.5,
                   justifyContent: 'center',
                   maxWidth: 600,
+                  alignItems: 'center'
                 }}
               >
                 <Typography
                   variant="body2"
-                  color="text.secondary"
                   sx={{ 
-                    alignSelf: 'center', 
-                    mr: 1,
-                    minWidth: 'fit-content'
+                    color: '#757575',
+                    fontWeight: 500,
+                    fontSize: '0.9375rem'
                   }}
                 >
                   Popular:
@@ -176,18 +193,19 @@ function Projects() {
                     key={tech}
                     label={tech}
                     variant="outlined"
-                    size="small"
+                    size="medium"
                     clickable
                     onClick={() => handleTagClick(tech)}
                     sx={{
-                      borderColor: 'primary.main',
-                      color: 'primary.main',
+                      borderColor: '#e0e0e0',
+                      color: '#212121',
+                      fontWeight: 500,
                       transition: 'all 0.2s ease',
                       '&:hover': {
-                        bgcolor: 'primary.main',
-                        color: 'white',
-                        transform: 'translateY(-1px)',
-                        boxShadow: '0px 2px 8px rgba(25, 118, 210, 0.3)',
+                        bgcolor: '#1976d2',
+                        color: '#ffffff',
+                        borderColor: '#1976d2',
+                        transform: 'translateY(-2px)',
                       },
                     }}
                   />
@@ -199,7 +217,7 @@ function Projects() {
 
         {/* Projects Grid */}
         <Fade in timeout={1200}>
-          <Grid container spacing={4} justifyContent="center">
+          <Grid container spacing={3} justifyContent="center">
             <Grid item xs={12} sm={6} md={4}>
               <ProjectCard />
             </Grid>
@@ -224,28 +242,47 @@ function Projects() {
             >
               <Typography
                 variant="h5"
-                color="text.secondary"
-                sx={{ mb: 2 }}
+                sx={{ 
+                  mb: 2,
+                  color: '#212121',
+                  fontWeight: 600,
+                  fontSize: '1.5rem'
+                }}
               >
                 No projects found for "{searchQuery}"
               </Typography>
               <Typography
                 variant="body1"
-                color="text.secondary"
-                sx={{ mb: 3 }}
+                sx={{ 
+                  mb: 3,
+                  color: '#757575',
+                  fontSize: '1rem'
+                }}
               >
                 Try searching for different technologies or browse all projects
               </Typography>
               <Chip
                 label="Clear Search"
-                color="primary"
                 onClick={handleClearSearch}
-                sx={{ cursor: 'pointer' }}
+                sx={{ 
+                  cursor: 'pointer',
+                  bgcolor: '#1976d2',
+                  color: '#ffffff',
+                  fontWeight: 600,
+                  px: 2,
+                  py: 2.5,
+                  fontSize: '0.9375rem',
+                  '&:hover': {
+                    bgcolor: '#115293'
+                  }
+                }}
               />
             </Box>
           </Fade>
         )}
       </Container>
+
+      <Footer/>
     </>
   );
 }

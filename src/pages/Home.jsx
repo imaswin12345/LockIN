@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import Footer from '../Component/Footer';
 import {
   Container,
   Grid,
@@ -20,7 +21,7 @@ import {
   TrendingUp,
   AutoAwesome,
 } from '@mui/icons-material';
-import theme from '../Theme/Theme'; // Assuming correct path
+import theme from '../Theme/Theme';
 import dev2 from '../Assets/DEVD.png';
 import logo from '../Assets/Box.png';
 import ProjectCard from '../Component/ProjectCard';
@@ -49,53 +50,16 @@ function Home() {
       {/* Hero Section */}
       <Box
         sx={{
-          minHeight: '100vh', // Full viewport height
-          width: '100%', // Full width
-          background: `
-            radial-gradient(ellipse at top, ${theme.palette.primary.main}15 0%, transparent 50%),
-            radial-gradient(ellipse at bottom, ${theme.palette.secondary.main}10 0%, transparent 50%),
-            ${theme.palette.background.default}
-          `,
+          minHeight: '100vh',
+          width: '100%',
+          bgcolor: '#ffffff',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center', // Center content vertically and horizontally
-          py: { xs: 4, md: 8 }, // Responsive padding
+          justifyContent: 'center',
+          py: { xs: 6, md: 10 },
           position: 'relative',
-          overflow: 'hidden',
         }}
       >
-        {/* Floating Background Elements */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '10%',
-            left: '5%',
-            width: '100px',
-            height: '100px',
-            borderRadius: '50%',
-            background: `linear-gradient(45deg, ${theme.palette.primary.main}20, ${theme.palette.secondary.main}20)`,
-            filter: 'blur(20px)',
-            animation: 'float 6s ease-in-out infinite',
-            '@keyframes float': {
-              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-              '50%': { transform: 'translateY(-20px) rotate(180deg)' },
-            },
-          }}
-        />
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '60%',
-            right: '10%',
-            width: '150px',
-            height: '150px',
-            borderRadius: '30%',
-            background: `linear-gradient(135deg, ${theme.palette.secondary.main}15, ${theme.palette.primary.main}15)`,
-            filter: 'blur(25px)',
-            animation: 'float 8s ease-in-out infinite reverse',
-          }}
-        />
-
         <Container maxWidth="lg">
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
@@ -103,13 +67,13 @@ function Home() {
                 {/* Badge */}
                 <Chip
                   icon={<AutoAwesome sx={{ fontSize: '16px !important' }} />}
-                  label="✨ New Features Available"
-                  variant="outlined"
+                  label="New Features Available"
                   sx={{
                     mb: 3,
-                    borderColor: theme.palette.primary.main,
-                    bgcolor: `${theme.palette.primary.main}08`,
-                    color: theme.palette.primary.main,
+                    borderColor: '#1976d2',
+                    border: '1px solid #1976d2',
+                    bgcolor: '#ffffff',
+                    color: '#1976d2',
                     fontWeight: 500,
                     px: 2,
                   }}
@@ -119,45 +83,30 @@ function Home() {
                 <Typography
                   variant="h1"
                   sx={{
-                    fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
+                    fontSize: { xs: '2.5rem', sm: '3rem', md: '3.75rem' },
                     fontWeight: 700,
                     lineHeight: 1.2,
                     mb: 3,
-                    background: `linear-gradient(135deg, ${theme.palette.text.primary} 0%, ${theme.palette.primary.main} 50%, ${theme.palette.secondary.main} 100%)`,
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
+                    color: '#212121',
                     letterSpacing: '-0.02em',
                   }}
                 >
                   Build. Manage.
                   <br />
-                  {/* <Box component="span" sx={{ position: 'relative' }}>
-                    Lock-In
-                    <Box
-                      component="img"
-                      src={logo}
-                      alt="LOCK-IN logo"
-                      sx={{
-                        width: { xs: 24, sm: 28, md: 32 },
-                        height: 'auto',
-                        ml: 1,
-                        verticalAlign: 'middle',
-                        filter: `brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%)`,
-                      }}
-                    />
-                  </Box> */}
+                  <Box component="span" sx={{ color: '#1976d2' }}>
+                    Succeed.
+                  </Box>
                 </Typography>
 
                 {/* Subtitle */}
                 <Typography
                   variant="body1"
-                  color="text.secondary"
                   sx={{
-                    mb: 4,
+                    mb: 5,
                     fontSize: { xs: '1rem', sm: '1.125rem' },
                     fontWeight: 400,
-                    lineHeight: 1.6,
+                    lineHeight: 1.7,
+                    color: '#757575',
                     maxWidth: 500,
                     mx: { xs: 'auto', md: 0 },
                   }}
@@ -170,8 +119,8 @@ function Home() {
                 <Box
                   sx={{
                     display: 'flex',
-                    gap: 4,
-                    mb: 4,
+                    gap: 5,
+                    mb: 5,
                     justifyContent: { xs: 'center', md: 'flex-start' },
                     flexWrap: 'wrap',
                   }}
@@ -186,13 +135,21 @@ function Home() {
                         variant="h5"
                         sx={{
                           fontWeight: 700,
-                          color: theme.palette.primary.main,
+                          color: '#1976d2',
                           fontSize: { xs: '1.5rem', sm: '1.75rem' },
+                          mb: 0.5,
                         }}
                       >
                         {stat.value}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          color: '#757575',
+                          fontSize: '0.875rem',
+                          fontWeight: 500,
+                        }}
+                      >
                         {stat.label}
                       </Typography>
                     </Box>
@@ -220,15 +177,17 @@ function Home() {
                       py: 1.5,
                       fontSize: '1rem',
                       fontWeight: 600,
-                      borderRadius: theme.shape.borderRadius,
-                      bgcolor: theme.palette.primary.main,
-                      minWidth: { xs: 160, sm: 180 },
-                      boxShadow: `0 8px 32px ${theme.palette.primary.main}40`,
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      borderRadius: 2,
+                      bgcolor: '#1976d2',
+                      color: '#ffffff',
+                      minWidth: { xs: 200, sm: 200 },
+                      boxShadow: 'none',
+                      textTransform: 'none',
+                      transition: 'all 0.2s ease',
                       '&:hover': {
-                        bgcolor: theme.palette.primary.dark,
-                        transform: 'translateY(-2px)',
-                        boxShadow: `0 16px 40px ${theme.palette.primary.main}50`,
+                        bgcolor: '#115293',
+                        boxShadow: 'none',
+                        transform: 'translateY(-1px)',
                       },
                     }}
                   >
@@ -242,17 +201,16 @@ function Home() {
                       py: 1.5,
                       fontSize: '1rem',
                       fontWeight: 600,
-                      borderRadius: theme.shape.borderRadius,
-                      borderWidth: 2,
-                      minWidth: { xs: 160, sm: 180 },
-                      borderColor: theme.palette.text.primary,
-                      color: theme.palette.text.primary,
-                      transition: 'all 0.3s ease',
+                      borderRadius: 2,
+                      minWidth: { xs: 200, sm: 200 },
+                      borderColor: '#e0e0e0',
+                      color: '#212121',
+                      textTransform: 'none',
+                      transition: 'all 0.2s ease',
                       '&:hover': {
-                        borderWidth: 2,
-                        bgcolor: theme.palette.text.primary,
-                        color: theme.palette.background.default,
-                        transform: 'translateY(-2px)',
+                        borderColor: '#1976d2',
+                        bgcolor: 'transparent',
+                        color: '#1976d2',
                       },
                     }}
                   >
@@ -279,12 +237,7 @@ function Home() {
                     width: '100%',
                     maxWidth: { xs: 300, sm: 400, md: 500 },
                     height: 'auto',
-                    borderRadius: theme.shape.borderRadius,
-                    boxShadow: `0 25px 50px ${theme.palette.primary.main}15`,
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.02)',
-                    },
+                    borderRadius: 2,
                   }}
                 />
               </Box>
@@ -296,91 +249,109 @@ function Home() {
       {/* Features Section */}
       <Box
         sx={{
-          py: { xs: 6, md: 10 },
-          bgcolor: theme.palette.background.paper,
+          marginRight:12,
+          marginLeft:12,
+          py: { xs: 6, md: 12 },
+          bgcolor: '#fafafa',
           width: '100%',
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xlg">
           <Box textAlign="center" mb={6}>
             <Typography
               variant="h2"
               sx={{
                 fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' },
                 fontWeight: 700,
+                marginLeft:-23,
+          
                 mb: 2,
-                color: theme.palette.text.primary,
+                color: '#212121',
               }}
             >
               Why Choose LOCK-IN?
             </Typography>
             <Typography
               variant="body1"
-              color="text.secondary"
               sx={{
                 maxWidth: 600,
                 mx: 'auto',
                 fontSize: { xs: '1rem', sm: '1.125rem' },
+                color: '#757575',
+               marginLeft:42,
+                lineHeight: 1.7,
               }}
             >
               Powerful features designed to enhance your development workflow
             </Typography>
           </Box>
 
-<Grid container spacing={2}>
-  {features.map((feature, index) => (
-    <Grid item xs={12} md={4} key={index}>
-      <Card
-        sx={{
-          p: 3,
-          height: '100%',
-          border: `1px solid ${theme.palette.divider}`,
-          borderRadius: theme.shape.borderRadius,
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            transform: 'translateY(-8px)',
-            boxShadow: `0 20px 40px ${theme.palette.primary.main}15`,
-            borderColor: theme.palette.primary.main,
-          },
-        }}
-      >
-        <CardContent sx={{ p: 0, textAlign: 'center' }}>
-          <Avatar
-            sx={{
-              bgcolor: `${theme.palette.primary.main}15`,
-              color: theme.palette.primary.main,
-              mb: 3,
-              width: 60,
-              height: 60,
-              mx: 'auto',
-            }}
-          >
-            {feature.icon}
-          </Avatar>
-          <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
-            {feature.title}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ lineHeight: 1.6 }}
-          >
-            {feature.description}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-  ))}
-</Grid>
-
+          <Grid container spacing={3}>
+            {features.map((feature, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Card
+                  sx={{
+                    p: 4,
+                    height: '100%',
+                    bgcolor: '#ffffff',
+                    border: '1px solid #e0e0e0',
+                    borderRadius: 2,
+                    boxShadow: 'none',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: '0 8px 24px rgba(25, 118, 210, 0.12)',
+                      borderColor: '#1976d2',
+                    },
+                  }}
+                >
+                  <CardContent sx={{ p: 0, textAlign: 'center' }}>
+                    <Avatar
+                      sx={{
+                        bgcolor: '#1976d2',
+                        color: '#ffffff',
+                        mb: 3,
+                        width: 64,
+                        height: 64,
+                        mx: 'auto',
+                      }}
+                    >
+                      {feature.icon}
+                    </Avatar>
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        fontWeight: 600, 
+                        mb: 2,
+                        color: '#212121',
+                        fontSize: '1.25rem',
+                      }}
+                    >
+                      {feature.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ 
+                        lineHeight: 1.7,
+                        color: '#757575',
+                        fontSize: '0.9375rem',
+                      }}
+                    >
+                      {feature.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Container>
       </Box>
 
       {/* Projects Section */}
       <Box
         sx={{
-          py: { xs: 6, md: 10 },
-          bgcolor: `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 100%)`,
+          py: { xs: 8, md: 12 },
+          bgcolor: '#ffffff',
           width: '100%',
         }}
       >
@@ -403,11 +374,18 @@ function Home() {
                   fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' },
                   fontWeight: 700,
                   mb: 1,
+                  color: '#212121',
                 }}
               >
                 Featured Projects
               </Typography>
-              <Typography variant="body1" color="text.secondary">
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  color: '#757575',
+                  fontSize: '1.0625rem',
+                }}
+              >
                 Discover amazing projects from our community
               </Typography>
             </Box>
@@ -417,11 +395,22 @@ function Home() {
               variant="contained"
               startIcon={<TrendingUp />}
               sx={{
-                px: 3,
+                px: 4,
                 py: 1.5,
-                borderRadius: theme.shape.borderRadius,
+                borderRadius: 2,
                 fontWeight: 600,
-                minWidth: { xs: 160, sm: 180 },
+                minWidth: { xs: 180, sm: 200 },
+                bgcolor: '#1976d2',
+                color: '#ffffff',
+                boxShadow: 'none',
+                textTransform: 'none',
+                fontSize: '1rem',
+                transition: 'all 0.2s ease',
+                '&:hover': {
+                  bgcolor: '#115293',
+                  boxShadow: 'none',
+                  transform: 'translateY(-1px)',
+                },
               }}
             >
               View All Projects
@@ -441,11 +430,12 @@ function Home() {
             }}
           >
             <ProjectCard />
-            {/* Add more ProjectCard components dynamically */}
           </Box>
         </Container>
       </Box>
+         <Footer/>
     </ThemeProvider>
+    
   );
 }
 
